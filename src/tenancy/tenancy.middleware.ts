@@ -8,6 +8,7 @@ import { Request, Response, NextFunction } from 'express';
 import { Connection, createConnection, getConnection } from 'typeorm';
 import { TenancyService } from './tenancy.service';
 import { TenancyEntity } from './tenancy.entity';
+import { UserEntity } from '../user/user.entity';
 
 @Injectable()
 export class TenancyMiddleware implements NestMiddleware {
@@ -42,7 +43,7 @@ export class TenancyMiddleware implements NestMiddleware {
         username: this.configService.get('DB_USER'),
         password: this.configService.get('DB_PASSWORD'),
         database: tenant.name,
-        entities: [], // TODO Add User Entity
+        entities: [UserEntity],
         synchronize: true,
       });
 

@@ -15,6 +15,7 @@ import { TenancyProvider } from './tenancy.provider';
   imports: [TypeOrmModule.forFeature([TenancyEntity])],
   providers: [TenancyService, TenancyProvider],
   controllers: [TenancyController],
+  exports: [TenancyProvider],
 })
 export class TenancyModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
